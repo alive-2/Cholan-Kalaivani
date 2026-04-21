@@ -28,7 +28,7 @@
     html { scroll-behavior: smooth }
 
     body {
-      background: linear-gradient(145deg, #f5e8d8, #f0e0c8 40%, #eedabb 70%, #f0e8d0);
+      background: linear-gradient(145deg, #2b0f15, #1a080c 40%, #201014 70%, #150608);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -37,6 +37,40 @@
       font-family: 'Jost', sans-serif;
       overflow-x: hidden;
       padding: 20px 10px 60px;
+      
+      --ink: #fdf5e6;
+      --ink-soft: #f0e0c8;
+      --ink-muted: #bdad9e;
+      --deep-red: #d9485b;
+      --gold: #f0c05a;
+      --kolam-gold: #f5d070;
+      --white: #1b0a0d; 
+    }
+
+    .ty-card {
+      background: rgba(30, 10, 15, 0.75);
+      border-color: rgba(245, 208, 112, 0.2);
+      box-shadow: 0 16px 56px rgba(0,0,0,0.8), 0 0 0 1px rgba(245, 208, 112,.15) inset;
+    }
+    .wish-form, .wish-card {
+      background: rgba(30, 10, 15, 0.75);
+      border-color: rgba(245, 208, 112, 0.2);
+    }
+    .wish-input, .wish-textarea {
+      background: rgba(15, 5, 8, 0.6);
+      color: var(--ink);
+    }
+    .ty-heading, .wh-title {
+      background: linear-gradient(45deg, #fdf5e6, #f5d070, #d9485b, #f5d070, #fdf5e6);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .wish-card::after {
+      background: radial-gradient(circle at top right, rgba(245,208,112,.08), transparent 70%);
+    }
+    #kolam-svg {
+      filter: drop-shadow(0 4px 16px rgba(245, 208, 112, .25));
     }
 
     /* ── CONFETTI STAGE ── */
@@ -190,11 +224,11 @@
     }
     .ty-card {
       position: relative;
-      background: rgba(255, 252, 245, 0.92);
+      background: rgba(30, 10, 15, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1.5px solid rgba(255,255,255,.6);
-      box-shadow: 0 16px 56px rgba(28,16,8,.1), 0 0 0 1px rgba(255,255,255,0.5) inset;
+      border: 1.5px solid rgba(245, 208, 112, 0.2);
+      box-shadow: 0 16px 56px rgba(0,0,0,0.8), 0 0 0 1px rgba(245, 208, 112,.15) inset;
       padding: 56px 48px 52px;
       text-align: center;
       animation: cardIn 1.2s .3s cubic-bezier(.22,1,.36,1) both;
@@ -270,7 +304,7 @@
       font-size: 9px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--deep-red);
+      color: var(--gold);
       display: block;
       margin-bottom: 16px;
       animation: fadeIn 1s 1s both;
@@ -285,7 +319,7 @@
       margin-top: -12px;
       margin-bottom: -4px;
       display: block;
-      background: linear-gradient(45deg, #1c1008, #c9922a, #8B1A2A, #c9922a, #1c1008);
+      background: linear-gradient(45deg, #fdf5e6, #f5d070, #d9485b, #f5d070, #fdf5e6);
       background-size: 300% auto;
       color: transparent;
       -webkit-background-clip: text;
@@ -404,11 +438,12 @@
       pointer-events: none;
       z-index: 9999;
       font-size: 16px;
-      animation: sparkleFall 1.2s cubic-bezier(.25,1,.5,1) forwards;
+      animation: bloomFade 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
     }
-    @keyframes sparkleFall {
-      0%   { opacity:.9; transform:translate(-50%,-50%) scale(1)   rotate(0deg)   }
-      100% { opacity:0;  transform:translate(-50%,50px) scale(.3) rotate(120deg) }
+    @keyframes bloomFade {
+      0%   { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
+      15%  { transform: translate(-50%, -50%) scale(1.1) rotate(20deg); opacity: 1; }
+      100% { transform: translate(-50%, 25px) scale(0.6) rotate(60deg); opacity: 0; }
     }
 
     /* ══════════════════════════════════
@@ -431,14 +466,14 @@
       font-size: 9px;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--deep-red);
+      color: var(--gold);
       display: block;
       margin-bottom: 6px;
     }
     .wishes-heading .wh-title {
       font-family: 'Great Vibes', cursive;
       font-size: 42px;
-      background: linear-gradient(45deg, #1c1008, #c9922a, #8B1A2A);
+      background: linear-gradient(45deg, #fdf5e6, #f5d070, #d9485b);
       background-size: 200% auto;
       color: transparent;
       -webkit-background-clip: text;
@@ -447,10 +482,10 @@
 
     /* Input form */
     .wish-form {
-      background: rgba(255,252,245,.9);
+      background: rgba(30, 10, 15, 0.75);
       backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(212,160,23,.25);
-      box-shadow: 0 8px 32px rgba(28,16,8,.08);
+      border: 1.5px solid rgba(245, 208, 112, 0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
       padding: 28px 32px;
       margin-bottom: 20px;
     }
@@ -461,12 +496,12 @@
     }
     .wish-input {
       flex: 1;
-      background: rgba(255,248,240,.8);
-      border: 1px solid rgba(212,160,23,.3);
+      background: rgba(15, 5, 8, 0.6);
+      border: 1px solid rgba(245, 208, 112, 0.2);
       padding: 11px 16px;
       font-family: 'Jost', sans-serif;
       font-size: 13px;
-      color: var(--ink-soft);
+      color: var(--ink);
       outline: none;
       transition: border-color .2s, box-shadow .2s;
     }
@@ -474,17 +509,17 @@
       border-color: var(--deep-red);
       box-shadow: 0 0 0 3px rgba(139,26,42,.08);
     }
-    .wish-input::placeholder { color: var(--ink-muted); opacity: .6; }
+    .wish-input::placeholder { color: var(--ink-soft); opacity: .8; }
 
     .wish-textarea {
       width: 100%;
-      background: rgba(255,248,240,.8);
-      border: 1px solid rgba(212,160,23,.3);
+      background: rgba(15, 5, 8, 0.6);
+      border: 1px solid rgba(245, 208, 112, 0.2);
       padding: 12px 16px;
       font-family: 'Cormorant Garamond', serif;
       font-size: 15px;
       font-style: italic;
-      color: var(--ink-soft);
+      color: var(--ink);
       outline: none;
       resize: vertical;
       min-height: 80px;
@@ -496,7 +531,7 @@
       border-color: var(--deep-red);
       box-shadow: 0 0 0 3px rgba(139,26,42,.08);
     }
-    .wish-textarea::placeholder { color: var(--ink-muted); opacity: .6; font-style: italic; }
+    .wish-textarea::placeholder { color: var(--ink-soft); opacity: .8; font-style: italic; }
 
     .wish-submit {
       display: inline-flex;
@@ -529,12 +564,12 @@
       gap: 14px;
     }
     .wish-card {
-      background: rgba(255,252,245,.88);
+      background: rgba(30, 10, 15, 0.75);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(212,160,23,.2);
+      border: 1px solid rgba(245, 208, 112, 0.2);
       border-left: 3px solid var(--deep-red);
       padding: 16px 20px;
-      box-shadow: 0 4px 20px rgba(28,16,8,.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       animation: wishIn .6s cubic-bezier(.22,1,.36,1) both;
       position: relative;
       overflow: hidden;
@@ -600,6 +635,34 @@
       color: var(--ink-muted);
       opacity: .6;
       padding: 24px 0;
+    }
+
+
+
+    .char-counter {
+      display: block;
+      text-align: right;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--ink-muted);
+      opacity: .6;
+      margin-top: -8px;
+      margin-bottom: 12px;
+      transition: color .2s;
+    }
+    .char-counter.near-limit { color: var(--coral); opacity: 1; }
+    .char-counter.at-limit { color: var(--deep-red); opacity: 1; font-weight: 500; }
+
+    /* Scroll Animations */
+    .scroll-fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .scroll-fade.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ── UTILITY ── */
@@ -669,36 +732,8 @@
         <circle cx="140" cy="140" r="2.2"/>
       </g>
 
-      <!-- Outer decorative loops - classic kolam curves -->
-      <!-- Large outer petal loops -->
-      <path class="kolam-path p1" stroke-width="2"
-        d="M100,30 C130,50 160,70 160,100 C160,130 130,150 100,170 C70,150 40,130 40,100 C40,70 70,50 100,30 Z"/>
-
-      <!-- Inner rotated square -->
-      <path class="kolam-path p2" stroke-width="1.8"
-        d="M100,55 L145,100 L100,145 L55,100 Z"/>
-
-      <!-- Petal curves connecting dots -->
-      <path class="kolam-path p3" stroke-width="1.4"
-        d="M80,60 C90,70 110,70 120,60 C130,70 130,90 120,100 C130,110 130,130 120,140 C110,130 90,130 80,140 C70,130 70,110 80,100 C70,90 70,70 80,60 Z"/>
-
-      <!-- Inner cross with curves -->
-      <path class="kolam-path p4" stroke-width="1.2"
-        d="M100,70 C112,80 120,88 120,100 C120,112 112,120 100,130 C88,120 80,112 80,100 C80,88 88,80 100,70 Z"/>
-
-      <!-- Small center decoration -->
-      <path class="kolam-path p5" stroke-width="1"
-        d="M100,88 C106,94 106,106 100,112 C94,106 94,94 100,88 Z
-           M88,100 C94,94 106,94 112,100 C106,106 94,106 88,100 Z"/>
-
-      <!-- Corner flourishes -->
-      <path class="kolam-path p2" stroke-width="1" stroke-dasharray="1500" stroke-dashoffset="1500"
-        d="M60,60 C60,40 80,30 100,30 M140,60 C160,60 170,80 170,100
-           M140,140 C140,160 120,170 100,170 M60,140 C40,140 30,120 30,100"/>
-
-      <!-- Outer ring -->
-      <circle class="kolam-path p1" cx="100" cy="100" r="85" stroke-width="1" fill="none"
-        style="stroke-dasharray:600;stroke-dashoffset:600;animation-delay:.3s"/>
+      <!-- Dynamically generated paths will be injected here -->
+      <g id="kolam-paths"></g>
     </svg>
   </div>
 
@@ -751,17 +786,18 @@
 
   <!-- ══ WISHES WALL ══ -->
   <section class="wishes-section">
-    <div class="wishes-heading">
+    <div class="wishes-heading scroll-fade">
       <span class="wh-tag">— share your love —</span>
       <span class="wh-title">Guest Wishes</span>
     </div>
 
-    <div class="wish-form">
+    <div class="wish-form scroll-fade">
       <div class="wish-form-row">
         <input type="text" id="wishName" class="wish-input" placeholder="Your name" maxlength="40">
         <input type="text" id="wishRelation" class="wish-input" placeholder="Relation (e.g. Friend, Uncle)" maxlength="30">
       </div>
       <textarea id="wishText" class="wish-textarea" placeholder="Write your heartfelt wishes for Cholan & Kalaivani…" maxlength="280"></textarea>
+      <span class="char-counter" id="charCounter">0 / 280</span>
       <button class="wish-submit" id="wishBtn">
         <span>🌸</span> Send Wishes
       </button>
@@ -772,6 +808,9 @@
     </div>
     <p class="wish-count" id="wishCount"></p>
   </section>
+
+  <!-- ══ BACKGROUND AUDIO ══ -->
+  <audio id="bgMusic" loop src="https://freepd.com/music/Canon%20in%20D.mp3" preload="auto" autoplay></audio>
 
   <script>
     /* ══ PETALS ══ */
@@ -807,8 +846,8 @@
     let b = 0;
     const iv = setInterval(() => { burst(40); if (++b >= 5) clearInterval(iv); }, 1800);
 
-    /* ══ CURSOR SPARKLES ══ */
-    const sparkleSet = ['✦','✨','💖','🌸','💮','🪷'];
+    /* ══ CURSOR SPARKLES (JASMINE BLOOM) ══ */
+    const sparkleSet = ['💮','💮','✨','•','•'];
     let lastSparkle = 0;
     function createSparkle(x, y) {
       const now = Date.now();
@@ -864,9 +903,54 @@
     }, { passive: true });
     wrap.addEventListener('touchend', resetTilt);
 
+    /* ══ AUDIO PLAYER (Auto) ══ */
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.4; // Soft background volume
+
+    // Autoplay logic
+    window.addEventListener('load', () => {
+      bgMusic.play().catch(e => console.log('Autoplay prevented by browser, waiting for interaction...'));
+    });
+    
+    // Attempt autoplay on any background interaction if it was blocked
+    document.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play().catch(() => {});
+      }
+    }, { once: true });
+    document.addEventListener('touchstart', () => {
+      if (bgMusic.paused) {
+        bgMusic.play().catch(() => {});
+      }
+    }, { once: true, passive: true });
+
+    /* ══ SCROLL ANIMATIONS (Intersection Observer) ══ */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
+
     /* ══ GUEST WISHES WALL ══ */
     const EMOJIS = ['🌹','💐','🕊️','🌺','💖','🌸','✨','🎊','🪷','💍'];
     let wishes = [];
+
+    // Load from Local Storage
+    try {
+      const stored = localStorage.getItem('cholanKalaivaniWishes');
+      if (stored) wishes = JSON.parse(stored);
+    } catch(e) { console.error('Could not load wishes', e); }
+
+    function saveWishes() {
+      try {
+        localStorage.setItem('cholanKalaivaniWishes', JSON.stringify(wishes));
+      } catch(e) { console.error('Could not save wishes', e); }
+    }
 
     function timeStr() {
       const now = new Date();
@@ -892,11 +976,11 @@
       // Render newest first
       [...wishes].reverse().forEach((w, i) => {
         const card = document.createElement('div');
-        card.className = 'wish-card';
+        card.className = 'wish-card scroll-fade is-visible'; // Pre-visible if rendering after load
         card.style.animationDelay = `${i * 0.08}s`;
         card.innerHTML = `
           <div class="wish-meta">
-            <span class="wish-name">${escHtml(w.name)}${w.relation ? ' <span style="font-weight:300;color:var(--ink-muted);font-size:11.5px;">· ${escHtml(w.relation)}</span>' : ''}</span>
+            <span class="wish-name">${escHtml(w.name)}${w.relation ? ' <span style="font-weight:300;color:var(--ink-muted);font-size:11.5px;">· ' + escHtml(w.relation) + '</span>' : ''}</span>
             <span class="wish-time">${w.time}</span>
           </div>
           <p class="wish-text">${escHtml(w.text)} <span class="wish-emoji">${w.emoji}</span></p>
@@ -909,33 +993,129 @@
       return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
+    // Character Counter
+    const wishText = document.getElementById('wishText');
+    const charCounter = document.getElementById('charCounter');
+    
+    wishText.addEventListener('input', () => {
+      const len = wishText.value.length;
+      charCounter.textContent = `${len} / 280`;
+      
+      if (len >= 280) {
+        charCounter.className = 'char-counter at-limit';
+      } else if (len >= 250) {
+        charCounter.className = 'char-counter near-limit';
+      } else {
+        charCounter.className = 'char-counter';
+      }
+    });
+
     document.getElementById('wishBtn').addEventListener('click', () => {
       const name = document.getElementById('wishName').value.trim();
       const relation = document.getElementById('wishRelation').value.trim();
-      const text = document.getElementById('wishText').value.trim();
+      const text = wishText.value.trim();
 
       if (!name || !text) {
         document.getElementById('wishName').style.borderColor = name ? '' : 'var(--deep-red)';
-        document.getElementById('wishText').style.borderColor = text ? '' : 'var(--deep-red)';
+        wishText.style.borderColor = text ? '' : 'var(--deep-red)';
         setTimeout(() => {
           document.getElementById('wishName').style.borderColor = '';
-          document.getElementById('wishText').style.borderColor = '';
+          wishText.style.borderColor = '';
         }, 2000);
         return;
       }
 
       const emoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
       wishes.push({ name, relation, text, emoji, time: timeStr() });
+      
+      saveWishes(); // Save to local storage
       renderWishes();
 
       // Reset
       document.getElementById('wishName').value = '';
       document.getElementById('wishRelation').value = '';
-      document.getElementById('wishText').value = '';
+      wishText.value = '';
+      charCounter.textContent = '0 / 280';
+      charCounter.className = 'char-counter';
 
       // Burst confetti on wish submit
       burst(60);
     });
+
+    /* ══ DYNAMIC KOLAM GENERATOR ══ */
+    /* ══ DYNAMIC KOLAM GENERATOR ══ */
+    function generateKolam() {
+      // Authentic Traditional Tamil Kolam Patterns (Sikku, Kodu, Thamarai)
+      const parts = {
+        centers: [
+          { d: "M100,30 C130,50 160,70 160,100 C160,130 130,150 100,170 C70,150 40,130 40,100 C40,70 70,50 100,30 Z", w: 2 }, // Classic Kalyana Lotus Center
+          { d: "M60,60 C100,20 100,20 140,60 C180,100 180,100 140,140 C100,180 100,180 60,140 C20,100 20,100 60,60 Z", w: 1.8 }, // Neli Twisted Ribbon
+          { d: "M100,20 C120,20 180,80 180,100 C180,120 120,180 100,180 C80,180 20,120 20,100 C20,80 80,20 100,20 Z", w: 1.6 }, // Roja Petals
+          { d: "M100,70 C120,50 150,70 100,130 C50,70 80,50 100,70", w: 1.5 }, // Idhaya Hearts (Top)
+          { d: "M60,60 C80,40 120,40 140,60 C160,80 160,120 140,140 C120,160 80,160 60,140 C40,120 40,80 60,60 Z", w: 1.8 }, // 8-Loop Sikku
+          { d: "M80,80 C80,40 120,40 120,80 C160,80 160,120 120,120 C120,160 80,160 80,120 C40,120 40,80 80,80 Z", w: 1.6 }, // Brahma Mudi
+          { d: "M100,10 C140,30 140,50 100,90 C60,50 60,30 100,10 Z", w: 1.5 }, // Thamarai (Lotus continuous)
+          { d: "M60,60 C40,40 80,20 100,60 C120,20 160,40 140,60 C160,80 180,120 140,140 C160,160 120,180 100,140 C80,180 40,160 60,140 C40,120 20,80 60,60 Z", w: 1.4 },// Infinity Knots
+          { d: "M80,140 L120,140 L120,130 C130,130 140,120 140,100 C140,80 100,40 100,40 C100,40 60,80 60,100 C60,120 70,130 80,130 Z", w: 1.2 }, // Diya Motif
+          { d: "M100,20 A80,80 0 1,1 99.9,20", w: 1.5 } // Chakra
+        ],
+        mids: [
+          { d: "M100,55 L145,100 L100,145 L55,100 Z", w: 1.5 }, // Kalyana Mid
+          { d: "M60,100 C40,100 40,80 60,80 C80,80 80,100 100,100 C120,100 120,80 140,80 C160,80 160,100 140,100 C120,100 120,120 100,120 C80,120 80,100 60,100", w: 1.4 }, // Twisted Neli Mid
+          { d: "M100,45 C115,45 155,85 155,100 C155,115 115,155 100,155 C85,155 45,115 45,100 C45,85 85,45 100,45 Z", w: 1.6 },// Roja Mid
+          { d: "M70,100 C50,120 70,150 130,100 C70,50 50,80 70,100", w: 1.5 },// Idhaya Mid 1
+          { d: "M100,40 C110,60 110,80 100,100 C90,120 90,140 100,160 C110,140 110,120 100,100 C90,80 90,60 100,40 Z", w: 1.4 },// 8-Loop Mid
+          { d: "M100,50 C120,50 120,70 100,70 C80,70 80,50 100,50 Z M100,130 C120,130 120,150 100,150 C80,150 80,130 100,130 Z", w: 1.2 },// Mudi Mid
+          { d: "M10,100 C30,140 50,140 90,100 C50,60 30,60 10,100 Z", w: 1.4 }, // Thamarai Mid
+          { d: "M100,80 C120,80 120,120 100,120 C80,120 80,80 100,80 Z", w: 1.2 }, // Infinity Mid
+          { d: "M100,55 C110,65 120,80 120,100 C120,110 110,120 100,120 C90,120 80,110 80,100 C80,80 90,65 100,55 Z", w: 1.5 }, // Diya Mid
+          { d: "M100,35 A65,65 0 1,1 99.9,35", w: 1.4 } // Chakra Mid
+        ],
+        outers: [
+          { d: "M80,60 C90,70 110,70 120,60 C130,70 130,90 120,100 C130,110 130,130 120,140 C110,130 90,130 80,140 C70,130 70,110 80,100 C70,90 70,70 80,60 Z", w: 1.4 },// Flower Petals
+          { d: "M100,60 C100,40 120,40 120,60 C120,80 100,80 100,100 C100,120 120,120 120,140 C120,160 100,160 100,140 C100,120 80,120 80,100 C80,80 100,80 100,60", w: 1.2 },// Neli Outer
+          { d: "M100,65 C120,80 120,120 100,135 C80,120 80,80 100,65 Z M65,100 C80,80 120,80 135,100 C120,120 80,120 65,100 Z", w: 1.2 }, // Roja Center Cross
+          { d: "M100,130 C80,150 50,130 100,70 C150,130 120,150 100,130", w: 1.5 },// Idhaya Mid 2
+          { d: "M40,100 C60,110 80,110 100,100 C120,90 140,90 160,100 C140,110 120,110 100,100 C80,90 60,90 40,100 Z", w: 1.2 },// 8-Loop Center Cross
+          { d: "M50,100 C50,80 70,80 70,100 C70,120 50,120 50,100 Z M130,100 C130,80 150,80 150,100 C150,120 130,120 130,100 Z", w: 1.2 },// Mudi Rings
+          { d: "M100,190 C60,170 60,150 100,110 C140,150 140,170 100,190 Z", w: 1.4 },// Thamarai Outer
+          { d: "M100,40 C110,50 110,70 100,80 C90,70 90,50 100,40 Z M100,160 C110,150 110,130 100,120 C90,130 90,150 100,160 Z", w: 1 },// Infinity Outer
+          { d: "M100,75 C105,80 110,90 110,100 C110,105 105,110 100,110 C95,110 90,105 90,100 C90,90 95,80 100,75 Z M60,160 L140,160 L130,150 L70,150 Z", w: 1.2 },// Diya Outer
+          { d: "M100,50 A50,50 0 1,1 99.9,50 M100,40 L100,60 M100,140 L100,160 M40,100 L60,100 M140,100 L160,100", w: 1.2 } // Chakra Details
+        ]
+      };
+
+      // Randomly select one of the traditional setups to ensure pure aesthetic coherence
+      const index = Math.floor(Math.random() * parts.centers.length);
+      const center = parts.centers[index];
+      const mid = parts.mids[index];
+      const outer = parts.outers[index];
+      
+      const colors = ['var(--kolam-gold)', 'var(--deep-red)', 'var(--turmeric)', 'var(--coral)'];
+      // Select 3 random unique colors for layers
+      let selColors = [...colors].sort(() => 0.5 - Math.random()).slice(0, 3);
+      
+      const layers = [
+        { ...outer, delay: 0.3, color: selColors[0] },
+        { ...mid, delay: 1.2, color: selColors[1] },
+        { ...center, delay: 2.1, color: selColors[2] }
+      ];
+
+      let html = '';
+      layers.forEach(layer => {
+        html += `<path class="kolam-path" stroke="${layer.color}" stroke-width="${layer.w}" d="${layer.d}" style="animation-delay: ${layer.delay}s"></path>`;
+      });
+      
+      // Always add the traditional inner cross and a center flourish to glue traditional kolams
+      html += `<path class="kolam-path" stroke="var(--deep-red)" stroke-width="1.2" d="M100,70 C112,80 120,88 120,100 C120,112 112,120 100,130 C88,120 80,112 80,100 C80,88 88,80 100,70 Z" style="animation-delay: 2.4s"></path>`;
+      html += `<path class="kolam-path" stroke="var(--kolam-gold)" stroke-width="1" d="M100,88 C106,94 106,106 100,112 C94,106 94,94 100,88 Z M88,100 C94,94 106,94 112,100 C106,106 94,106 88,100 Z" style="animation-delay: 2.7s"></path>`;
+      
+      document.getElementById('kolam-paths').innerHTML = html;
+    }
+    
+    generateKolam();
+
+
 
     renderWishes();
   </script>
