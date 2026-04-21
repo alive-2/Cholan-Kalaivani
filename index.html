@@ -4,31 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You — Cholan & Kalaivani Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --white: #fff;
-      --rose: #e8657a;
-      --rose-light: #f0a0ae;
-      --rose-pale: #fce8ec;
-      --gold: #c9922a;
-      --gold-light: #e8b84b;
-      --gold-pale: #f5dfa0;
-      --sage: #7aaa8a;
-      --ink: #1c1008;
-      --ink-soft: #3d2b1a;
-      --ink-muted: #7a6550;
-      --coral: #e87050;
-      --deep-red: #8B1A2A;
-      --turmeric: #D4881A;
-      --kolam-gold: #D4A017;
+      --text-main: #ffffff;
+      --text-sub: #f8fafc;
+      --accent-gold: #facc15;
+      --accent-glow: rgba(250, 204, 21, 0.6);
+      --text-glow-dark: rgba(0, 0, 0, 0.85);
+      --text-glow-soft: rgba(0, 0, 0, 0.6);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
     html { scroll-behavior: smooth }
 
     body {
-      background: linear-gradient(145deg, #2b0f15, #1a080c 40%, #201014 70%, #150608);
+      /* Align background to bottom center so the couple and bike are fully visible */
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('./couple_back.png') center bottom / cover no-repeat fixed;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -36,895 +28,399 @@
       align-items: center;
       font-family: 'Jost', sans-serif;
       overflow-x: hidden;
-      padding: 20px 10px 60px;
-      
-      --ink: #fdf5e6;
-      --ink-soft: #f0e0c8;
-      --ink-muted: #bdad9e;
-      --deep-red: #d9485b;
-      --gold: #f0c05a;
-      --kolam-gold: #f5d070;
-      --white: #1b0a0d; 
+      padding: 60px 10px 100px;
+      color: var(--text-main);
     }
 
-    .ty-card {
-      background: rgba(30, 10, 15, 0.75);
-      border-color: rgba(245, 208, 112, 0.2);
-      box-shadow: 0 16px 56px rgba(0,0,0,0.8), 0 0 0 1px rgba(245, 208, 112,.15) inset;
-    }
-    .wish-form, .wish-card {
-      background: rgba(30, 10, 15, 0.75);
-      border-color: rgba(245, 208, 112, 0.2);
-    }
-    .wish-input, .wish-textarea {
-      background: rgba(15, 5, 8, 0.6);
-      color: var(--ink);
-    }
-    .ty-heading, .wh-title {
-      background: linear-gradient(45deg, #fdf5e6, #f5d070, #d9485b, #f5d070, #fdf5e6);
-      background-size: 300% auto;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .wish-card::after {
-      background: radial-gradient(circle at top right, rgba(245,208,112,.08), transparent 70%);
-    }
-    #kolam-svg {
-      filter: drop-shadow(0 4px 16px rgba(245, 208, 112, .25));
-    }
-
-    /* ── CONFETTI STAGE ── */
-    #confetti-stage {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ── FALLING PETALS ── */
-    .petal {
-      position: fixed;
-      pointer-events: none;
-      opacity: 0;
-      animation: petalFall ease-in infinite;
-      z-index: 2;
-    }
-    @keyframes petalFall {
-      0%   { opacity: 0;   transform: translateY(0px)   rotate(0deg)   scale(1)   }
-      8%   { opacity: .9;  transform: translateY(40px)  rotate(40deg)  scale(1)   }
-      70%  { opacity: .85; transform: translateY(60vh)  rotate(300deg) scale(.9)  }
-      88%  { opacity: .15; transform: translateY(80vh)  rotate(370deg) scale(.8)  }
-      100% { opacity: 0;   transform: translateY(100vh) rotate(420deg) scale(.7)  }
-    }
-
-    /* ── CONFETTI PIECES ── */
-    .cp {
-      position: fixed;
-      pointer-events: none;
-      animation: cpF linear forwards;
-      opacity: 0;
-    }
-    @keyframes cpF {
-      0%   { opacity: 1;  transform: translateY(-20px) rotate(0deg)   }
-      100% { opacity: 0;  transform: translateY(110vh) rotate(560deg) }
-    }
-
-    /* ── BACKGROUND ILLUSTRATIONS ── */
-    .ty-bg-illus {
-      position: fixed;
-      font-size: 52px;
-      opacity: .45;
-      pointer-events: none;
-      animation: bgFloat ease-in-out infinite;
-      z-index: 1;
-      user-select: none;
-    }
-    @keyframes bgFloat {
-      0%,100% { transform: translateY(0) rotate(-5deg) scale(1) }
-      50%     { transform: translateY(-18px) rotate(12deg) scale(1.06) }
-    }
-    .ty-bg-illus:nth-child(1)  { top:4%;  left:3%;   animation-duration:5s;   }
-    .ty-bg-illus:nth-child(2)  { top:4%;  right:3%;  animation-duration:4s;   animation-delay:.7s  }
-    .ty-bg-illus:nth-child(3)  { bottom:14%; left:3%;  animation-duration:4.5s; animation-delay:1.4s }
-    .ty-bg-illus:nth-child(4)  { bottom:14%; right:3%; animation-duration:5.5s; animation-delay:2s   }
-    .ty-bg-illus:nth-child(5)  { top:50%; left:1%;   animation-duration:6s;   animation-delay:.3s  }
-    .ty-bg-illus:nth-child(6)  { top:50%; right:1%;  animation-duration:5s;   animation-delay:1s   }
-    .ty-bg-illus:nth-child(7)  { top:22%; left:46%;  animation-duration:7s;   animation-delay:1.8s }
-    .ty-bg-illus:nth-child(8)  { top:70%; left:46%;  animation-duration:4.8s; animation-delay:.5s  }
-
-    /* ══════════════════════════════════
-       KOLAM SECTION
-    ══════════════════════════════════ */
-    .kolam-section {
-      position: relative;
-      z-index: 10;
+    /* ── GENERAL TEXT STYLES (NO CARDS) ── */
+    .content-wrapper {
       width: 92%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: -30px;
-      animation: fadeIn 1.2s .1s both;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      z-index: 10;
+      position: relative;
     }
-    .kolam-label {
-      font-family: 'Jost', sans-serif;
-      font-size: 9px;
+
+    .ty-tag {
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 20px;
+      animation: fadeIn 1s .5s both;
+      text-shadow: 0 2px 8px var(--text-glow-dark);
+    }
+
+    .ty-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(72px, 14vw, 110px);
+      line-height: 1.2;
+      padding: 10px 0;
+      margin-top: -12px;
+      display: block;
+      color: #fff;
+      animation: fadeIn 1s .7s both;
+      text-shadow: 0 4px 16px var(--text-glow-dark), 0 2px 4px var(--text-glow-dark);
+    }
+
+    .ty-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(32px, 7vw, 48px);
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 30px;
+      animation: fadeIn 1s .9s both;
+      text-shadow: 0 3px 12px var(--text-glow-dark);
+    }
+
+    .ty-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-sub);
+      line-height: 1.9;
+      margin-bottom: 32px;
+      animation: fadeIn 1s 1.1s both;
+      text-shadow: 0 2px 8px var(--text-glow-dark), 0 1px 3px #000;
+      padding: 0 15px;
+    }
+    .ty-body strong {
+      color: #fff;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .ty-quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent-gold);
+      line-height: 1.7;
+      display: block;
+      margin-bottom: 30px;
+      animation: fadeIn 1s 1.3s both;
+      text-shadow: 0 2px 10px var(--text-glow-dark);
+    }
+
+    .ty-date {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--deep-red);
-      opacity: .7;
-      margin-bottom: 6px;
-    }
-    #kolam-svg {
-      width: 200px;
-      height: 200px;
-      filter: drop-shadow(0 2px 12px rgba(212,160,23,.35));
-    }
-    /* Kolam paths draw themselves */
-    .kolam-path {
-      fill: none;
-      stroke: var(--kolam-gold);
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      animation: drawPath 3.5s ease forwards;
-      stroke-dasharray: 2000;
-      stroke-dashoffset: 2000;
-    }
-    .kolam-path.p2 { stroke: var(--deep-red); animation-delay: .6s; stroke-width: 1.5; }
-    .kolam-path.p3 { stroke: var(--turmeric); animation-delay: 1.2s; stroke-width: 1; }
-    .kolam-path.p4 { stroke: var(--kolam-gold); animation-delay: 1.8s; stroke-width: 1.2; }
-    .kolam-path.p5 { stroke: var(--deep-red); animation-delay: 2.4s; stroke-width: .8; }
-    .kolam-dots circle {
-      fill: var(--deep-red);
-      animation: dotAppear .3s ease both;
-    }
-    @keyframes drawPath {
-      to { stroke-dashoffset: 0; }
-    }
-    @keyframes dotAppear {
-      from { opacity: 0; r: 0; }
-      to   { opacity: 1; }
-    }
-    /* stagger dots */
-    .kolam-dots circle:nth-child(1)  { animation-delay:0s }
-    .kolam-dots circle:nth-child(2)  { animation-delay:.08s }
-    .kolam-dots circle:nth-child(3)  { animation-delay:.16s }
-    .kolam-dots circle:nth-child(4)  { animation-delay:.24s }
-    .kolam-dots circle:nth-child(5)  { animation-delay:.32s }
-    .kolam-dots circle:nth-child(6)  { animation-delay:.40s }
-    .kolam-dots circle:nth-child(7)  { animation-delay:.48s }
-    .kolam-dots circle:nth-child(8)  { animation-delay:.56s }
-    .kolam-dots circle:nth-child(9)  { animation-delay:.64s }
-    .kolam-dots circle:nth-child(10) { animation-delay:.72s }
-    .kolam-dots circle:nth-child(11) { animation-delay:.80s }
-    .kolam-dots circle:nth-child(12) { animation-delay:.88s }
-    .kolam-dots circle:nth-child(13) { animation-delay:.96s }
-    .kolam-dots circle:nth-child(14) { animation-delay:1.04s }
-    .kolam-dots circle:nth-child(15) { animation-delay:1.12s }
-    .kolam-dots circle:nth-child(16) { animation-delay:1.20s }
-    .kolam-dots circle:nth-child(17) { animation-delay:1.28s }
-    .kolam-dots circle:nth-child(18) { animation-delay:1.36s }
-    .kolam-dots circle:nth-child(19) { animation-delay:1.44s }
-    .kolam-dots circle:nth-child(20) { animation-delay:1.52s }
-    .kolam-dots circle:nth-child(21) { animation-delay:1.60s }
-    .kolam-dots circle:nth-child(22) { animation-delay:1.68s }
-    .kolam-dots circle:nth-child(23) { animation-delay:1.76s }
-    .kolam-dots circle:nth-child(24) { animation-delay:1.84s }
-    .kolam-dots circle:nth-child(25) { animation-delay:1.92s }
-
-    /* ══════════════════════════════════
-       3D TILT CARD
-    ══════════════════════════════════ */
-    .ty-card-wrap {
-      width: 92%;
-      max-width: 600px;
-      perspective: 1200px;
-      z-index: 10;
-      position: relative;
-    }
-    .ty-card {
-      position: relative;
-      background: rgba(30, 10, 15, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1.5px solid rgba(245, 208, 112, 0.2);
-      box-shadow: 0 16px 56px rgba(0,0,0,0.8), 0 0 0 1px rgba(245, 208, 112,.15) inset;
-      padding: 56px 48px 52px;
-      text-align: center;
-      animation: cardIn 1.2s .3s cubic-bezier(.22,1,.36,1) both;
-      margin: 0 auto;
-      transform-style: preserve-3d;
-      transition: box-shadow 0.15s ease;
-      will-change: transform;
-    }
-    /* top shimmer bar */
-    .ty-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #8B1A2A, #D4A017, #e8657a, #D4A017, #8B1A2A);
-      background-size: 200% auto;
-      animation: gradientShift 4s linear infinite;
-    }
-    .ty-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #8B1A2A, #D4A017, #e8657a, #D4A017, #8B1A2A);
-      background-size: 200% auto;
-      animation: gradientShift 4s linear infinite reverse;
-    }
-    /* Gloss layer that moves with tilt */
-    .ty-card-gloss {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25) 0%, transparent 60%);
-      pointer-events: none;
-      transition: background 0.1s;
-      z-index: 0;
-    }
-    .ty-card > *:not(.ty-card-gloss) { position: relative; z-index: 1; }
-
-    @keyframes gradientShift {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    @keyframes cardIn {
-      from { opacity:0; transform: scale(.93) translateY(30px) }
-      to   { opacity:1; transform: scale(1)   translateY(0)    }
+      color: #fff;
+      margin-bottom: 40px;
+      animation: fadeIn 1s 1.5s both;
+      text-shadow: 0 3px 12px var(--text-glow-dark);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.5);
+      padding-bottom: 8px;
     }
 
-    /* ── ICON ROW ── */
     .ty-icon-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 16px;
+      margin-bottom: 24px;
+      animation: fadeIn 1s 1.7s both;
     }
     .ty-icon-row span {
-      font-size: 30px;
+      font-size: 28px;
       animation: iconBob 3s ease-in-out infinite;
       display: inline-block;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
     }
     .ty-icon-row span:nth-child(2) { animation-delay:.3s }
     .ty-icon-row span:nth-child(3) { animation-delay:.6s }
-    .ty-icon-row span:nth-child(4) { animation-delay:.9s }
-    .ty-icon-row span:nth-child(5) { animation-delay:1.2s}
+
     @keyframes iconBob {
-      0%,100% { transform: translateY(0)    scale(1)    }
-      50%      { transform: translateY(-7px) scale(1.12) }
-    }
-
-    /* ── EYEBROW TAG ── */
-    .ty-tag {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 9px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 16px;
-      animation: fadeIn 1s 1s both;
-    }
-
-    /* ── HEADING ── */
-    .ty-heading {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(72px,14vw,108px);
-      line-height: 1.3;
-      padding: 12px 0;
-      margin-top: -12px;
-      margin-bottom: -4px;
-      display: block;
-      background: linear-gradient(45deg, #fdf5e6, #f5d070, #d9485b, #f5d070, #fdf5e6);
-      background-size: 300% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      animation: textShimmer 6s ease-in-out infinite;
-    }
-    @keyframes textShimmer {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* ── COUPLE NAMES ── */
-    .ty-names {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(28px,6vw,44px);
-      color: var(--gold);
-      display: block;
-      margin-bottom: 26px;
-      animation: fadeIn 1s .8s both;
-    }
-
-    /* ── DIVIDER ── */
-    .ty-div {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 14px 0;
-    }
-    .ty-div .tl { flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--deep-red)) }
-    .ty-div .tr { flex:1; height:1px; background:linear-gradient(90deg,var(--deep-red),transparent) }
-    .ty-div span { font-size:14px }
-
-    /* ── BODY TEXT ── */
-    .ty-body {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18.5px;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 2.1;
-      margin-bottom: 24px;
-      animation: fadeIn 1s 1.2s both;
-    }
-    .ty-body strong {
-      color: var(--ink);
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    /* ── QUOTE BLOCK ── */
-    .ty-quote-block {
-      background: linear-gradient(135deg,#fff8f0,#f8f0e8);
-      border-left: 3px solid var(--deep-red);
-      border-right: 3px solid var(--deep-red);
-      padding: 18px 22px;
-      margin-bottom: 22px;
-      position: relative;
-    }
-    .ty-quote-block::before {
-      content: '❝';
-      position: absolute;
-      top: -10px; left: 12px;
-      font-size: 30px;
-      color: rgba(139,26,42,.18);
-    }
-    .ty-quote-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--ink-muted);
-      line-height: 1.8;
-      display: block;
-    }
-
-    /* ── DATE BADGE ── */
-    .ty-date {
-      display: inline-block;
-      font-family: 'Jost', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #fff;
-      background: linear-gradient(135deg, var(--deep-red), var(--coral));
-      padding: 13px 30px;
-      box-shadow: 0 4px 18px rgba(139,26,42,.3);
-      margin-bottom: 6px;
-    }
-
-    /* ── FOOTER ICONS ── */
-    .ty-footer-icons {
-      display: flex;
-      justify-content: center;
-      gap: 11px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-    .ty-footer-icons span {
-      font-size: 22px;
-      animation: iconBob 3s ease-in-out infinite;
-      display: inline-block;
-    }
-    .ty-footer-icons span:nth-child(2) { animation-delay:.28s }
-    .ty-footer-icons span:nth-child(3) { animation-delay:.56s }
-    .ty-footer-icons span:nth-child(4) { animation-delay:.84s }
-    .ty-footer-icons span:nth-child(5) { animation-delay:1.12s}
-    .ty-footer-icons span:nth-child(6) { animation-delay:1.4s }
-
-    /* ── CURSOR ── */
-    * { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><polygon points="2,2 10,24 14,16 24,10" fill="white" stroke="%238B1A2A" stroke-width="1.5" stroke-linejoin="round"/><text x="12" y="26" font-size="18">🌸</text></svg>'), auto !important }
-
-    .cursor-sparkle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      font-size: 16px;
-      animation: bloomFade 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-    }
-    @keyframes bloomFade {
-      0%   { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
-      15%  { transform: translate(-50%, -50%) scale(1.1) rotate(20deg); opacity: 1; }
-      100% { transform: translate(-50%, 25px) scale(0.6) rotate(60deg); opacity: 0; }
+      0%,100% { transform: translateY(0) }
+      50%     { transform: translateY(-8px) }
     }
 
     /* ══════════════════════════════════
-       WISHES WALL
+       WISHES WALL (NO CARDS)
     ══════════════════════════════════ */
     .wishes-section {
-      position: relative;
-      z-index: 10;
-      width: 92%;
-      max-width: 600px;
-      margin-top: 32px;
-      animation: fadeIn 1.2s 1.5s both;
+      width: 100%;
+      margin-top: 40px;
     }
     .wishes-heading {
-      text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .wishes-heading .wh-tag {
-      font-family: 'Jost', sans-serif;
-      font-size: 9px;
-      letter-spacing: 5px;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent-gold);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px var(--text-glow-dark);
     }
     .wishes-heading .wh-title {
       font-family: 'Great Vibes', cursive;
-      font-size: 42px;
-      background: linear-gradient(45deg, #fdf5e6, #f5d070, #d9485b);
-      background-size: 200% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
+      font-size: 56px;
+      color: #fff;
+      text-shadow: 0 4px 16px var(--text-glow-dark);
     }
 
     /* Input form */
     .wish-form {
-      background: rgba(30, 10, 15, 0.75);
-      backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(245, 208, 112, 0.2);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      padding: 28px 32px;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      padding: 0 10px;
     }
     .wish-form-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap: 16px;
+      margin-bottom: 16px;
     }
-    .wish-input {
-      flex: 1;
-      background: rgba(15, 5, 8, 0.6);
-      border: 1px solid rgba(245, 208, 112, 0.2);
-      padding: 11px 16px;
+    .wish-input, .wish-textarea {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 16px 20px;
       font-family: 'Jost', sans-serif;
-      font-size: 13px;
-      color: var(--ink);
+      font-size: 15px;
+      color: #fff;
       outline: none;
-      transition: border-color .2s, box-shadow .2s;
+      transition: all .2s;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     }
-    .wish-input:focus {
-      border-color: var(--deep-red);
-      box-shadow: 0 0 0 3px rgba(139,26,42,.08);
-    }
-    .wish-input::placeholder { color: var(--ink-soft); opacity: .8; }
-
+    .wish-input { flex: 1; }
     .wish-textarea {
       width: 100%;
-      background: rgba(15, 5, 8, 0.6);
-      border: 1px solid rgba(245, 208, 112, 0.2);
-      padding: 12px 16px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
       font-style: italic;
-      color: var(--ink);
-      outline: none;
+      font-size: 18px;
       resize: vertical;
-      min-height: 80px;
-      transition: border-color .2s, box-shadow .2s;
-      margin-bottom: 12px;
+      min-height: 110px;
+      margin-bottom: 16px;
       display: block;
     }
-    .wish-textarea:focus {
-      border-color: var(--deep-red);
-      box-shadow: 0 0 0 3px rgba(139,26,42,.08);
+    .wish-input:focus, .wish-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2), 0 8px 24px rgba(0,0,0,0.5);
     }
-    .wish-textarea::placeholder { color: var(--ink-soft); opacity: .8; font-style: italic; }
+    .wish-input::placeholder, .wish-textarea::placeholder { 
+      color: rgba(255,255,255,0.7); 
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+
+    .char-counter {
+      display: block;
+      text-align: right;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.8);
+      margin-top: -8px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
 
     .wish-submit {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--deep-red), #b02238);
-      color: #fff;
-      border: none;
-      padding: 12px 28px;
+      gap: 10px;
+      background: rgba(0,0,0,0.4);
+      color: var(--accent-gold);
+      border: 1.5px solid var(--accent-gold);
+      border-radius: 30px;
+      padding: 14px 36px;
       font-family: 'Jost', sans-serif;
-      font-size: 11.5px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
       text-transform: uppercase;
       cursor: pointer !important;
-      transition: transform .2s, box-shadow .2s, background .2s;
-      box-shadow: 0 4px 16px rgba(139,26,42,.28);
+      transition: all .3s;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
     .wish-submit:hover {
+      background: var(--accent-gold);
+      color: #000;
+      text-shadow: none;
+      box-shadow: 0 8px 24px rgba(250, 204, 21, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(139,26,42,.36);
-      background: linear-gradient(135deg, #a01525, var(--deep-red));
     }
-    .wish-submit:active { transform: translateY(0); }
 
     /* Wishes list */
     .wishes-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 20px;
+      text-align: left;
     }
-    .wish-card {
-      background: rgba(30, 10, 15, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(245, 208, 112, 0.2);
-      border-left: 3px solid var(--deep-red);
-      padding: 16px 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    .wish-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
       animation: wishIn .6s cubic-bezier(.22,1,.36,1) both;
-      position: relative;
-      overflow: hidden;
-    }
-    .wish-card::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 60px; height: 60px;
-      background: radial-gradient(circle at top right, rgba(212,160,23,.08), transparent 70%);
-      pointer-events: none;
     }
     @keyframes wishIn {
-      from { opacity:0; transform: translateX(-20px) scale(.96) }
-      to   { opacity:1; transform: translateX(0)     scale(1)   }
+      from { opacity:0; transform: translateY(10px) }
+      to   { opacity:1; transform: translateY(0) }
     }
     .wish-meta {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 7px;
+      align-items: baseline;
+      margin-bottom: 8px;
     }
     .wish-name {
       font-family: 'Playfair Display', serif;
-      font-size: 13.5px;
+      font-size: 17px;
       font-weight: 600;
-      color: var(--deep-red);
+      color: var(--accent-gold);
+      text-shadow: 0 2px 8px var(--text-glow-dark);
+    }
+    .wish-relation {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      margin-left: 6px;
     }
     .wish-time {
-      font-family: 'Jost', sans-serif;
-      font-size: 9px;
+      font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--ink-muted);
-      opacity: .6;
+      color: rgba(255,255,255,0.7);
+      text-shadow: 0 2px 4px var(--text-glow-dark);
     }
     .wish-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
+      font-size: 20px;
       font-style: italic;
-      color: var(--ink-soft);
-      line-height: 1.75;
+      color: #fff;
+      line-height: 1.7;
+      text-shadow: 0 2px 8px var(--text-glow-dark), 0 1px 3px #000;
     }
-    .wish-emoji {
-      font-size: 18px;
-      margin-left: 6px;
-    }
+    .wish-emoji { font-size: 20px; margin-left: 8px; }
+    
     .wish-count {
       text-align: center;
-      font-family: 'Jost', sans-serif;
-      font-size: 9px;
-      letter-spacing: 3px;
+      font-size: 11px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--ink-muted);
-      opacity: .55;
-      margin-top: 14px;
+      color: rgba(255,255,255,0.7);
+      text-shadow: 0 2px 6px var(--text-glow-dark);
+      margin-top: 32px;
     }
     .wish-empty {
       text-align: center;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 15px;
-      color: var(--ink-muted);
-      opacity: .6;
-      padding: 24px 0;
+      font-size: 20px;
+      color: rgba(255,255,255,0.8);
+      text-shadow: 0 2px 8px var(--text-glow-dark);
+      padding: 40px 0;
     }
-
-
-
-    .char-counter {
-      display: block;
-      text-align: right;
-      font-family: 'Jost', sans-serif;
-      font-size: 10px;
-      letter-spacing: 1px;
-      color: var(--ink-muted);
-      opacity: .6;
-      margin-top: -8px;
-      margin-bottom: 12px;
-      transition: color .2s;
-    }
-    .char-counter.near-limit { color: var(--coral); opacity: 1; }
-    .char-counter.at-limit { color: var(--deep-red); opacity: 1; font-weight: 500; }
 
     /* Scroll Animations */
     .scroll-fade {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(30px);
+      transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .scroll-fade.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ── UTILITY ── */
     @keyframes fadeIn {
       from { opacity:0; transform:translateY(14px) }
       to   { opacity:1; transform:translateY(0)    }
     }
 
     @media(max-width:540px) {
-      .ty-card { padding: 38px 20px 36px }
-      .wish-form { padding: 20px 16px }
-      .wish-form-row { flex-direction: column }
+      .wish-form-row { flex-direction: column; gap: 12px; }
+      .ty-heading { font-size: 64px; }
+      .wish-meta { flex-direction: column; gap: 4px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background floating illustrations -->
-  <span class="ty-bg-illus">🌸</span>
-  <span class="ty-bg-illus">🌺</span>
-  <span class="ty-bg-illus">🌼</span>
-  <span class="ty-bg-illus">🌹</span>
-  <span class="ty-bg-illus">💐</span>
-  <span class="ty-bg-illus">🕊️</span>
-  <span class="ty-bg-illus">💍</span>
-  <span class="ty-bg-illus">🎊</span>
+  <div class="content-wrapper">
 
-  <!-- Confetti & Petals containers -->
-  <div id="confetti-stage"></div>
+    <div class="ty-icon-row">
+      <span>⛰️</span><span>🌊</span><span>🏍️</span>
+    </div>
 
-  <!-- ══ KOLAM ══ -->
-  <div class="kolam-section">
-    <span class="kolam-label">— திருமண வாழ்த்துக்கள் —</span>
-    <svg id="kolam-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <!-- Dots grid -->
-      <g class="kolam-dots">
-        <!-- 5x5 grid centered -->
-        <!-- row 1 -->
-        <circle cx="60" cy="60" r="2.2"/>
-        <circle cx="80" cy="60" r="2.2"/>
-        <circle cx="100" cy="60" r="2.2"/>
-        <circle cx="120" cy="60" r="2.2"/>
-        <circle cx="140" cy="60" r="2.2"/>
-        <!-- row 2 -->
-        <circle cx="60" cy="80" r="2.2"/>
-        <circle cx="80" cy="80" r="2.2"/>
-        <circle cx="100" cy="80" r="2.2"/>
-        <circle cx="120" cy="80" r="2.2"/>
-        <circle cx="140" cy="80" r="2.2"/>
-        <!-- row 3 -->
-        <circle cx="60" cy="100" r="2.2"/>
-        <circle cx="80" cy="100" r="2.2"/>
-        <circle cx="100" cy="100" r="2.2"/>
-        <circle cx="120" cy="100" r="2.2"/>
-        <circle cx="140" cy="100" r="2.2"/>
-        <!-- row 4 -->
-        <circle cx="60" cy="120" r="2.2"/>
-        <circle cx="80" cy="120" r="2.2"/>
-        <circle cx="100" cy="120" r="2.2"/>
-        <circle cx="120" cy="120" r="2.2"/>
-        <circle cx="140" cy="120" r="2.2"/>
-        <!-- row 5 -->
-        <circle cx="60" cy="140" r="2.2"/>
-        <circle cx="80" cy="140" r="2.2"/>
-        <circle cx="100" cy="140" r="2.2"/>
-        <circle cx="120" cy="140" r="2.2"/>
-        <circle cx="140" cy="140" r="2.2"/>
-      </g>
+    <span class="ty-tag">The Beautiful Journey Continues</span>
 
-      <!-- Dynamically generated paths will be injected here -->
-      <g id="kolam-paths"></g>
-    </svg>
+    <h1 class="ty-heading">Thank You</h1>
+
+    <span class="ty-names">J. Cholan Weds J. Kalaivani</span>
+
+    <p class="ty-body">
+      We are overjoyed that you could share in the <br>
+      beginning of our greatest adventure yet.<br><br>
+      From the bottom of our hearts, thank you for<br>
+      your presence, prayers, and boundless love.
+    </p>
+
+    <span class="ty-quote-text">
+      "Together, we ride into the horizon."
+    </span>
+
+    <span class="ty-date">✦ Married on 20 April 2026 ✦</span>
+
+    <!-- ══ WISHES WALL ══ -->
+    <section class="wishes-section">
+      <div class="wishes-heading scroll-fade">
+        <span class="wh-tag">Share Your Blessings</span>
+        <h2 class="wh-title">Guest Wishes</h2>
+      </div>
+
+      <div class="wish-form scroll-fade">
+        <div class="wish-form-row">
+          <input type="text" id="wishName" class="wish-input" placeholder="Your name" maxlength="40">
+          <input type="text" id="wishRelation" class="wish-input" placeholder="Relation (e.g. Friend, Sister)" maxlength="30">
+        </div>
+        <textarea id="wishText" class="wish-textarea" placeholder="Leave a heartfelt message for our journey..." maxlength="280"></textarea>
+        <span class="char-counter" id="charCounter">0 / 280</span>
+        <button class="wish-submit" id="wishBtn">
+          Send Wishes ✨
+        </button>
+      </div>
+
+      <div class="wishes-list" id="wishesList">
+        <p class="wish-empty" id="wishEmpty">Be the first to bless our journey ahead 🌄</p>
+      </div>
+      <p class="wish-count" id="wishCount"></p>
+    </section>
+
   </div>
-
-  <!-- ══ 3D TILT CARD WRAPPER ══ -->
-  <div class="ty-card-wrap">
-    <div class="ty-card" id="tyCard">
-      <div class="ty-card-gloss" id="cardGloss"></div>
-
-      <div class="ty-icon-row">
-        <span>🌺</span><span>🌸</span><span>🕊️</span><span>🌸</span><span>🌺</span>
-      </div>
-
-      <span class="ty-tag">— The Sacred Bond Is Forever Sealed —</span>
-
-      <span class="ty-heading">Thank You</span>
-
-      <span class="ty-names">J. Cholan Weds J. Kalaivani</span>
-
-      <div class="ty-div">
-        <div class="tl"></div><span>💐</span><div class="tr"></div>
-      </div>
-
-      <p class="ty-body">
-        The beautiful union of<br>
-        <strong>J. Cholan &amp; J. Kalaivani</strong><br>
-        has been joyfully and lovingly celebrated.<br><br>
-        From the bottom of our hearts,<br>
-        thank you for your presence, prayers,<br>
-        and all the love you showered upon us. 🌹
-      </p>
-
-      <div class="ty-quote-block">
-        <span class="ty-quote-text">
-          "A great marriage is not when the 'perfect couple' comes together —<br>
-          it is when an imperfect couple learns to enjoy their differences."
-        </span>
-      </div>
-
-      <span class="ty-date">✦ Married on 20 April 2026 ✦</span>
-
-      <div class="ty-div" style="margin-top:18px">
-        <div class="tl"></div><span>🌸</span><div class="tr"></div>
-      </div>
-
-      <div class="ty-footer-icons">
-        <span>🌹</span><span>💒</span><span>🕊️</span><span>💐</span><span>🎊</span><span>🌺</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ WISHES WALL ══ -->
-  <section class="wishes-section">
-    <div class="wishes-heading scroll-fade">
-      <span class="wh-tag">— share your love —</span>
-      <span class="wh-title">Guest Wishes</span>
-    </div>
-
-    <div class="wish-form scroll-fade">
-      <div class="wish-form-row">
-        <input type="text" id="wishName" class="wish-input" placeholder="Your name" maxlength="40">
-        <input type="text" id="wishRelation" class="wish-input" placeholder="Relation (e.g. Friend, Uncle)" maxlength="30">
-      </div>
-      <textarea id="wishText" class="wish-textarea" placeholder="Write your heartfelt wishes for Cholan & Kalaivani…" maxlength="280"></textarea>
-      <span class="char-counter" id="charCounter">0 / 280</span>
-      <button class="wish-submit" id="wishBtn">
-        <span>🌸</span> Send Wishes
-      </button>
-    </div>
-
-    <div class="wishes-list" id="wishesList">
-      <p class="wish-empty" id="wishEmpty">Be the first to leave a blessing 🌹</p>
-    </div>
-    <p class="wish-count" id="wishCount"></p>
-  </section>
 
   <!-- ══ BACKGROUND AUDIO ══ -->
   <audio id="bgMusic" loop src="https://freepd.com/music/Canon%20in%20D.mp3" preload="auto" autoplay></audio>
 
   <script>
-    /* ══ PETALS ══ */
-    const petalSet = ['🌸','🌺','🌼','🌹','🪷','💮'];
-    function spawnPetal() {
-      const p = document.createElement('span');
-      p.className = 'petal';
-      p.textContent = petalSet[Math.floor(Math.random() * petalSet.length)];
-      const dur = 6 + Math.random() * 6;
-      const sz  = 14 + Math.random() * 16;
-      p.style.cssText = `left:${Math.random()*100}%;top:-60px;font-size:${sz}px;animation-duration:${dur}s;animation-delay:${Math.random()*2}s;`;
-      document.body.appendChild(p);
-      setTimeout(() => p.remove(), (dur + 3) * 1000);
-    }
-    setInterval(spawnPetal, 700);
-    for (let i = 0; i < 8; i++) setTimeout(spawnPetal, i * 250);
-
-    /* ══ CONFETTI ══ */
-    const cpColors = ['#8B1A2A','#D4A017','#e8657a','#f0a060','#70ba88','#f5c0c8','#f5dfa0','#fff'];
-    const stage = document.getElementById('confetti-stage');
-    function burst(n) {
-      for (let i = 0; i < n; i++) {
-        const c = document.createElement('div');
-        c.className = 'cp';
-        const sz = 4 + Math.random() * 9;
-        const shapes = ['50%','2px','0'];
-        c.style.cssText = `left:${Math.random()*100}vw;top:${-5-Math.random()*20}px;background:${cpColors[Math.floor(Math.random()*cpColors.length)]};width:${sz}px;height:${sz}px;border-radius:${shapes[Math.floor(Math.random()*3)]};animation-duration:${4+Math.random()*5}s;animation-delay:${Math.random()*3}s;`;
-        stage.appendChild(c);
-        setTimeout(() => c.remove(), 10000);
-      }
-    }
-    burst(120);
-    let b = 0;
-    const iv = setInterval(() => { burst(40); if (++b >= 5) clearInterval(iv); }, 1800);
-
-    /* ══ CURSOR SPARKLES (JASMINE BLOOM) ══ */
-    const sparkleSet = ['💮','💮','✨','•','•'];
-    let lastSparkle = 0;
-    function createSparkle(x, y) {
-      const now = Date.now();
-      if (now - lastSparkle < 45) return;
-      lastSparkle = now;
-      const el = document.createElement('span');
-      el.className = 'cursor-sparkle';
-      el.textContent = sparkleSet[Math.floor(Math.random() * sparkleSet.length)];
-      el.style.color = cpColors[Math.floor(Math.random() * cpColors.length)];
-      el.style.left = `${x + (Math.random()-.5)*20}px`;
-      el.style.top  = `${y + (Math.random()-.5)*20}px`;
-      el.style.fontSize = `${12 + Math.random()*12}px`;
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 1200);
-    }
-    document.addEventListener('mousemove', e => createSparkle(e.clientX, e.clientY));
-    document.addEventListener('touchmove', e => {
-      if (e.touches[0]) createSparkle(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: true });
-
-    /* ══ 3D PARALLAX TILT ══ */
-    const card = document.getElementById('tyCard');
-    const gloss = document.getElementById('cardGloss');
-    const MAX_TILT = 12;
-
-    function applyTilt(x, y, rect) {
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top  + rect.height / 2;
-      const dx = (x - cx) / (rect.width  / 2);
-      const dy = (y - cy) / (rect.height / 2);
-      const tiltX = -dy * MAX_TILT;
-      const tiltY =  dx * MAX_TILT;
-      card.style.transform = `perspective(1200px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02,1.02,1.02)`;
-      card.style.boxShadow = `${-tiltY*2}px ${tiltX*2 + 18}px 60px rgba(28,16,8,.15)`;
-      const glossX = 50 + dx * 30;
-      const glossY = 50 + dy * 30;
-      gloss.style.background = `radial-gradient(circle at ${glossX}% ${glossY}%, rgba(255,255,255,.32) 0%, transparent 60%)`;
-    }
-
-    function resetTilt() {
-      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-      card.style.boxShadow = '0 16px 56px rgba(28,16,8,.10)';
-      gloss.style.background = 'radial-gradient(circle at 30% 30%, rgba(255,255,255,.25) 0%, transparent 60%)';
-    }
-
-    const wrap = card.closest('.ty-card-wrap');
-    wrap.addEventListener('mousemove', e => {
-      applyTilt(e.clientX, e.clientY, card.getBoundingClientRect());
-    });
-    wrap.addEventListener('mouseleave', resetTilt);
-    wrap.addEventListener('touchmove', e => {
-      if (e.touches[0]) applyTilt(e.touches[0].clientX, e.touches[0].clientY, card.getBoundingClientRect());
-    }, { passive: true });
-    wrap.addEventListener('touchend', resetTilt);
-
     /* ══ AUDIO PLAYER (Auto) ══ */
     const bgMusic = document.getElementById('bgMusic');
-    bgMusic.volume = 0.4; // Soft background volume
+    bgMusic.volume = 0.4;
 
-    // Autoplay logic
     window.addEventListener('load', () => {
-      bgMusic.play().catch(e => console.log('Autoplay prevented by browser, waiting for interaction...'));
+      bgMusic.play().catch(e => console.log('Autoplay prevented by browser'));
     });
     
-    // Attempt autoplay on any background interaction if it was blocked
     document.addEventListener('click', () => {
-      if (bgMusic.paused) {
-        bgMusic.play().catch(() => {});
-      }
+      if (bgMusic.paused) { bgMusic.play().catch(() => {}); }
     }, { once: true });
     document.addEventListener('touchstart', () => {
-      if (bgMusic.paused) {
-        bgMusic.play().catch(() => {});
-      }
+      if (bgMusic.paused) { bgMusic.play().catch(() => {}); }
     }, { once: true, passive: true });
 
-    /* ══ SCROLL ANIMATIONS (Intersection Observer) ══ */
+    /* ══ SCROLL ANIMATIONS ══ */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -932,24 +428,21 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
-
+    }, { threshold: 0.1 });
     document.querySelectorAll('.scroll-fade').forEach(el => observer.observe(el));
 
     /* ══ GUEST WISHES WALL ══ */
-    const EMOJIS = ['🌹','💐','🕊️','🌺','💖','🌸','✨','🎊','🪷','💍'];
+    const EMOJIS = ['✨','🌅','⛰️','🌊','🏍️','💛','🌸','🕊️'];
     let wishes = [];
 
-    // Load from Local Storage
     try {
       const stored = localStorage.getItem('cholanKalaivaniWishes');
       if (stored) wishes = JSON.parse(stored);
     } catch(e) { console.error('Could not load wishes', e); }
 
     function saveWishes() {
-      try {
-        localStorage.setItem('cholanKalaivaniWishes', JSON.stringify(wishes));
-      } catch(e) { console.error('Could not save wishes', e); }
+      try { localStorage.setItem('cholanKalaivaniWishes', JSON.stringify(wishes)); }
+      catch(e) { }
     }
 
     function timeStr() {
@@ -970,22 +463,23 @@
         count.textContent = `✦  ${wishes.length} ${wishes.length === 1 ? 'blessing' : 'blessings'} received  ✦`;
       }
 
-      // Clear all wish cards
-      Array.from(list.querySelectorAll('.wish-card')).forEach(el => el.remove());
+      Array.from(list.querySelectorAll('.wish-item')).forEach(el => el.remove());
 
-      // Render newest first
       [...wishes].reverse().forEach((w, i) => {
-        const card = document.createElement('div');
-        card.className = 'wish-card scroll-fade is-visible'; // Pre-visible if rendering after load
-        card.style.animationDelay = `${i * 0.08}s`;
-        card.innerHTML = `
+        const item = document.createElement('div');
+        item.className = 'wish-item scroll-fade is-visible';
+        item.style.animationDelay = `${i * 0.08}s`;
+        item.innerHTML = `
           <div class="wish-meta">
-            <span class="wish-name">${escHtml(w.name)}${w.relation ? ' <span style="font-weight:300;color:var(--ink-muted);font-size:11.5px;">· ' + escHtml(w.relation) + '</span>' : ''}</span>
+            <span class="wish-name">
+              ${escHtml(w.name)}
+              ${w.relation ? `<span class="wish-relation">· ${escHtml(w.relation)}</span>` : ''}
+            </span>
             <span class="wish-time">${w.time}</span>
           </div>
           <p class="wish-text">${escHtml(w.text)} <span class="wish-emoji">${w.emoji}</span></p>
         `;
-        list.appendChild(card);
+        list.appendChild(item);
       });
     }
 
@@ -993,21 +487,14 @@
       return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    // Character Counter
     const wishText = document.getElementById('wishText');
     const charCounter = document.getElementById('charCounter');
     
     wishText.addEventListener('input', () => {
       const len = wishText.value.length;
       charCounter.textContent = `${len} / 280`;
-      
-      if (len >= 280) {
-        charCounter.className = 'char-counter at-limit';
-      } else if (len >= 250) {
-        charCounter.className = 'char-counter near-limit';
-      } else {
-        charCounter.className = 'char-counter';
-      }
+      if (len >= 280) charCounter.style.color = 'var(--accent-gold)';
+      else charCounter.style.color = 'rgba(255,255,255,0.8)';
     });
 
     document.getElementById('wishBtn').addEventListener('click', () => {
@@ -1016,11 +503,11 @@
       const text = wishText.value.trim();
 
       if (!name || !text) {
-        document.getElementById('wishName').style.borderColor = name ? '' : 'var(--deep-red)';
-        wishText.style.borderColor = text ? '' : 'var(--deep-red)';
+        document.getElementById('wishName').style.borderColor = name ? '' : 'var(--accent-gold)';
+        wishText.style.borderColor = text ? '' : 'var(--accent-gold)';
         setTimeout(() => {
-          document.getElementById('wishName').style.borderColor = '';
-          wishText.style.borderColor = '';
+          document.getElementById('wishName').style.borderColor = 'rgba(255,255,255,0.3)';
+          wishText.style.borderColor = 'rgba(255,255,255,0.3)';
         }, 2000);
         return;
       }
@@ -1028,94 +515,15 @@
       const emoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
       wishes.push({ name, relation, text, emoji, time: timeStr() });
       
-      saveWishes(); // Save to local storage
+      saveWishes();
       renderWishes();
 
-      // Reset
       document.getElementById('wishName').value = '';
       document.getElementById('wishRelation').value = '';
       wishText.value = '';
       charCounter.textContent = '0 / 280';
-      charCounter.className = 'char-counter';
-
-      // Burst confetti on wish submit
-      burst(60);
+      charCounter.style.color = 'rgba(255,255,255,0.8)';
     });
-
-    /* ══ DYNAMIC KOLAM GENERATOR ══ */
-    /* ══ DYNAMIC KOLAM GENERATOR ══ */
-    function generateKolam() {
-      // Authentic Traditional Tamil Kolam Patterns (Sikku, Kodu, Thamarai)
-      const parts = {
-        centers: [
-          { d: "M100,30 C130,50 160,70 160,100 C160,130 130,150 100,170 C70,150 40,130 40,100 C40,70 70,50 100,30 Z", w: 2 }, // Classic Kalyana Lotus Center
-          { d: "M60,60 C100,20 100,20 140,60 C180,100 180,100 140,140 C100,180 100,180 60,140 C20,100 20,100 60,60 Z", w: 1.8 }, // Neli Twisted Ribbon
-          { d: "M100,20 C120,20 180,80 180,100 C180,120 120,180 100,180 C80,180 20,120 20,100 C20,80 80,20 100,20 Z", w: 1.6 }, // Roja Petals
-          { d: "M100,70 C120,50 150,70 100,130 C50,70 80,50 100,70", w: 1.5 }, // Idhaya Hearts (Top)
-          { d: "M60,60 C80,40 120,40 140,60 C160,80 160,120 140,140 C120,160 80,160 60,140 C40,120 40,80 60,60 Z", w: 1.8 }, // 8-Loop Sikku
-          { d: "M80,80 C80,40 120,40 120,80 C160,80 160,120 120,120 C120,160 80,160 80,120 C40,120 40,80 80,80 Z", w: 1.6 }, // Brahma Mudi
-          { d: "M100,10 C140,30 140,50 100,90 C60,50 60,30 100,10 Z", w: 1.5 }, // Thamarai (Lotus continuous)
-          { d: "M60,60 C40,40 80,20 100,60 C120,20 160,40 140,60 C160,80 180,120 140,140 C160,160 120,180 100,140 C80,180 40,160 60,140 C40,120 20,80 60,60 Z", w: 1.4 },// Infinity Knots
-          { d: "M80,140 L120,140 L120,130 C130,130 140,120 140,100 C140,80 100,40 100,40 C100,40 60,80 60,100 C60,120 70,130 80,130 Z", w: 1.2 }, // Diya Motif
-          { d: "M100,20 A80,80 0 1,1 99.9,20", w: 1.5 } // Chakra
-        ],
-        mids: [
-          { d: "M100,55 L145,100 L100,145 L55,100 Z", w: 1.5 }, // Kalyana Mid
-          { d: "M60,100 C40,100 40,80 60,80 C80,80 80,100 100,100 C120,100 120,80 140,80 C160,80 160,100 140,100 C120,100 120,120 100,120 C80,120 80,100 60,100", w: 1.4 }, // Twisted Neli Mid
-          { d: "M100,45 C115,45 155,85 155,100 C155,115 115,155 100,155 C85,155 45,115 45,100 C45,85 85,45 100,45 Z", w: 1.6 },// Roja Mid
-          { d: "M70,100 C50,120 70,150 130,100 C70,50 50,80 70,100", w: 1.5 },// Idhaya Mid 1
-          { d: "M100,40 C110,60 110,80 100,100 C90,120 90,140 100,160 C110,140 110,120 100,100 C90,80 90,60 100,40 Z", w: 1.4 },// 8-Loop Mid
-          { d: "M100,50 C120,50 120,70 100,70 C80,70 80,50 100,50 Z M100,130 C120,130 120,150 100,150 C80,150 80,130 100,130 Z", w: 1.2 },// Mudi Mid
-          { d: "M10,100 C30,140 50,140 90,100 C50,60 30,60 10,100 Z", w: 1.4 }, // Thamarai Mid
-          { d: "M100,80 C120,80 120,120 100,120 C80,120 80,80 100,80 Z", w: 1.2 }, // Infinity Mid
-          { d: "M100,55 C110,65 120,80 120,100 C120,110 110,120 100,120 C90,120 80,110 80,100 C80,80 90,65 100,55 Z", w: 1.5 }, // Diya Mid
-          { d: "M100,35 A65,65 0 1,1 99.9,35", w: 1.4 } // Chakra Mid
-        ],
-        outers: [
-          { d: "M80,60 C90,70 110,70 120,60 C130,70 130,90 120,100 C130,110 130,130 120,140 C110,130 90,130 80,140 C70,130 70,110 80,100 C70,90 70,70 80,60 Z", w: 1.4 },// Flower Petals
-          { d: "M100,60 C100,40 120,40 120,60 C120,80 100,80 100,100 C100,120 120,120 120,140 C120,160 100,160 100,140 C100,120 80,120 80,100 C80,80 100,80 100,60", w: 1.2 },// Neli Outer
-          { d: "M100,65 C120,80 120,120 100,135 C80,120 80,80 100,65 Z M65,100 C80,80 120,80 135,100 C120,120 80,120 65,100 Z", w: 1.2 }, // Roja Center Cross
-          { d: "M100,130 C80,150 50,130 100,70 C150,130 120,150 100,130", w: 1.5 },// Idhaya Mid 2
-          { d: "M40,100 C60,110 80,110 100,100 C120,90 140,90 160,100 C140,110 120,110 100,100 C80,90 60,90 40,100 Z", w: 1.2 },// 8-Loop Center Cross
-          { d: "M50,100 C50,80 70,80 70,100 C70,120 50,120 50,100 Z M130,100 C130,80 150,80 150,100 C150,120 130,120 130,100 Z", w: 1.2 },// Mudi Rings
-          { d: "M100,190 C60,170 60,150 100,110 C140,150 140,170 100,190 Z", w: 1.4 },// Thamarai Outer
-          { d: "M100,40 C110,50 110,70 100,80 C90,70 90,50 100,40 Z M100,160 C110,150 110,130 100,120 C90,130 90,150 100,160 Z", w: 1 },// Infinity Outer
-          { d: "M100,75 C105,80 110,90 110,100 C110,105 105,110 100,110 C95,110 90,105 90,100 C90,90 95,80 100,75 Z M60,160 L140,160 L130,150 L70,150 Z", w: 1.2 },// Diya Outer
-          { d: "M100,50 A50,50 0 1,1 99.9,50 M100,40 L100,60 M100,140 L100,160 M40,100 L60,100 M140,100 L160,100", w: 1.2 } // Chakra Details
-        ]
-      };
-
-      // Randomly select one of the traditional setups to ensure pure aesthetic coherence
-      const index = Math.floor(Math.random() * parts.centers.length);
-      const center = parts.centers[index];
-      const mid = parts.mids[index];
-      const outer = parts.outers[index];
-      
-      const colors = ['var(--kolam-gold)', 'var(--deep-red)', 'var(--turmeric)', 'var(--coral)'];
-      // Select 3 random unique colors for layers
-      let selColors = [...colors].sort(() => 0.5 - Math.random()).slice(0, 3);
-      
-      const layers = [
-        { ...outer, delay: 0.3, color: selColors[0] },
-        { ...mid, delay: 1.2, color: selColors[1] },
-        { ...center, delay: 2.1, color: selColors[2] }
-      ];
-
-      let html = '';
-      layers.forEach(layer => {
-        html += `<path class="kolam-path" stroke="${layer.color}" stroke-width="${layer.w}" d="${layer.d}" style="animation-delay: ${layer.delay}s"></path>`;
-      });
-      
-      // Always add the traditional inner cross and a center flourish to glue traditional kolams
-      html += `<path class="kolam-path" stroke="var(--deep-red)" stroke-width="1.2" d="M100,70 C112,80 120,88 120,100 C120,112 112,120 100,130 C88,120 80,112 80,100 C80,88 88,80 100,70 Z" style="animation-delay: 2.4s"></path>`;
-      html += `<path class="kolam-path" stroke="var(--kolam-gold)" stroke-width="1" d="M100,88 C106,94 106,106 100,112 C94,106 94,94 100,88 Z M88,100 C94,94 106,94 112,100 C106,106 94,106 88,100 Z" style="animation-delay: 2.7s"></path>`;
-      
-      document.getElementById('kolam-paths').innerHTML = html;
-    }
-    
-    generateKolam();
-
-
 
     renderWishes();
   </script>
